@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyProt Consult - Consultoria em Comércio Exterior</title>
+    <meta name="description" content="Consultoria especializada em comércio exterior, mentoria e treinamentos para otimizar suas operações internacionais.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #003D7A;
+            --primary-light: #005988;
+            --accent: #21B2C9;
+            --accent-light: #3b8ba5;
+            --white: #FFFFFF;
+            --text-light: #F0F4F8;
+            --bg-dark: #0A1628;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+
+        .logo-text strong {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+        }
+
+        .logo-text small {
+            font-size: 0.7rem;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 50%, var(--bg-dark) 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(33, 178, 201, 0.05);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .about-highlight {
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, rgba(0, 61, 122, 0.3) 0%, rgba(33, 178, 201, 0.1) 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: rgba(33, 178, 201, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Methodology Section */
+        .methodology {
+            background: rgba(33, 178, 201, 0.05);
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .method-step {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .method-step h3 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: linear-gradient(135deg, rgba(0, 61, 122, 0.3) 0%, rgba(33, 178, 201, 0.1) 100%);
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent);
+        }
+
+        .benefit-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(33, 178, 201, 0.05);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+        }
+
+        .contact-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Diagonal cut effect */
+        .diagonal-cut {
+            position: relative;
+            padding-bottom: 4rem;
+        }
+
+        .diagonal-cut::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: inherit;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 20%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="EasyProt Consult Logo">
+                <div class="logo-text">
+                    <strong>EasyProtConsult</strong>
+                    <small>COMÉRCIO EXTERIOR</small>
+                </div>
+            </a>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#metodologia">Metodologia</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transforme seu <span class="accent">Comércio Exterior</span></h1>
+            <p>Consultoria especializada, mentoria e treinamentos para otimizar suas operações internacionais com segurança e eficiência.</p>
+            <a href="#contato" class="cta-button">Solicitar Consulta</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <h2>Sobre a EasyProt Consult</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Expertise em Comércio Exterior</h3>
+                    <p>Com um legado de mais de duas décadas no ramo de manufatura de equipamentos médicos, destaquei-me no desenvolvimento de estratégias para o comércio exterior e na implementação de processos que resultam na otimização de custos e eficiência operacional, possibilitando a globalização do negócio.</p>
+                    
+                    <h3>Trajetória de Excelência</h3>
+                    <p>Neste percurso, o foco em negociações nacionais e internacionais e a liderança de equipes foram competências constantemente aprimoradas, refletindo meu compromisso com a excelência e a inovação.</p>
+                </div>
+                <div class="about-highlight">
+                    <h3 style="color: var(--primary-dark); margin-top: 0;">Nossa Missão</h3>
+                    <p style="color: var(--primary-dark);">Aplicando habilidades de análise de riscos e gestão de operações internacionais, combinadas com comunicação assertiva e pensamento analítico, entregamos soluções estratégicas em diversos contextos de comércio exterior.</p>
+                    <p style="color: var(--primary-dark); margin-top: 1rem; font-weight: bold;">Como mentora e consultora, conseguiremos levar seu negócio a outro patamar através da globalização.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Diagnóstico Estratégico</h3>
+                    <p>Análise completa de sua necessidade e desenvolvimento de plano de ação em comércio exterior, identificando oportunidades e riscos.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Consultoria em Implantação</h3>
+                    <p>Estruturação de departamentos de comércio exterior, implementação de processos e procedimentos otimizados para sua operação.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Treinamentos Especializados</h3>
+                    <p>Programas de capacitação para equipes em comércio exterior, desde o básico até módulos avançados como Protheus EIC/EEC.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Mentoria Contínua</h3>
+                    <p>Acompanhamento personalizado para estruturação e otimização contínua do seu departamento de comércio exterior.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Análise de NCM e Conformidade</h3>
+                    <p>Análises de NCM's, descrições detalhadas e correspondências internacionais para conformidade aduaneira global.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Prospecção Internacional</h3>
+                    <p>Identificação e desenvolvimento de parcerias com clientes e fornecedores internacionais para expansão do negócio.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Expansão de Negócios</h3>
+                    <p>Estratégias de crescimento para mercado nacional e internacional, com análise de oportunidades e estruturação de operações.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="metodologia" class="methodology">
+        <div class="container">
+            <h2>Nossa Metodologia</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">Processo estruturado em três etapas para garantir resultados efetivos</p>
+            <div class="methodology-grid">
+                <div class="method-step">
+                    <div class="step-number">D</div>
+                    <h3>Diagnóstico</h3>
+                    <p>Análise profunda de sua situação atual e identificação de necessidades específicas em comércio exterior.</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">O</div>
+                    <h3>Olhar Profundo</h3>
+                    <p>Preparação e execução de soluções customizadas para sua empresa, com foco em resultados mensuráveis.</p>
+                </div>
+                <div class="method-step">
+                    <div class="step-number">R</div>
+                    <h3>Resolução</h3>
+                    <p>Implementação e acompanhamento contínuo para garantir a sustentabilidade das soluções implementadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2>Por que Escolher a EasyProt Consult?</h2>
+            <div class="benefits">
+                <div class="benefit-item">
+                    <h3>✓ Expertise Comprovada</h3>
+                    <p>25+ anos de experiência em comércio exterior e operações internacionais.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✓ Redução de Custos</h3>
+                    <p>Otimização de processos e aproveitamento de regimes especiais para maximizar lucratividade.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✓ Mentoria Personalizada</h3>
+                    <p>Soluções customizadas adaptadas às necessidades específicas do seu negócio.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✓ Abordagem Estratégica</h3>
+                    <p>Análise de riscos e pensamento estratégico para decisões bem fundamentadas.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✓ Suporte Contínuo</h3>
+                    <p>Acompanhamento e orientação constante para o sucesso a longo prazo.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>✓ Globalização do Negócio</h3>
+                    <p>Estratégias comprovadas para levar sua empresa ao próximo nível internacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-content">
+                <p>Pronto para transformar seu comércio exterior? Solicite uma consulta gratuita e descubra como podemos ajudar seu negócio a crescer.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📧 Email</h3>
+                        <a href="mailto:ana.feitosa@easyprotconsult.com.br">ana.feitosa@easyprotconsult.com.br</a>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📱 WhatsApp</h3>
+                        <a href="https://wa.me/5516991650468">+55 16 99165-0468</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 EasyProt Consult. Todos os direitos reservados.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">Consultoria em Comércio Exterior | Mentoria | Treinamentos</p>
+        </div>
+    </footer>
+</body>
+</html>
